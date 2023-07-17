@@ -37,9 +37,7 @@ app.get("/done", async (req, res, next) => {
 			},
 		});
 		const data: any = await response.json();
-		console.log(data);
 		const { id_token, access_token } = data;
-		console.log(id_token, access_token);
 
 		// get google user
 		//1) in id token you will have all the details of google user just decode it
@@ -58,7 +56,6 @@ app.get("/done", async (req, res, next) => {
 
 		const googleUser = await googleUserData.json();
 
-		console.log("Google User: ");
 		console.log(googleUser);
 
 		res.status(200).redirect("http://localhost:3000")
