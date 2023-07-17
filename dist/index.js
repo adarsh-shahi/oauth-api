@@ -31,7 +31,6 @@ app.get("/done", (req, res, next) => __awaiter(void 0, void 0, void 0, function*
         grant_type: "authorization_code",
     };
     console.log(qs_1.default.stringify(values));
-    console.log("SIKE");
     try {
         const response = yield fetch(`${url}?${qs_1.default.stringify(values)}`, {
             method: "post",
@@ -40,9 +39,7 @@ app.get("/done", (req, res, next) => __awaiter(void 0, void 0, void 0, function*
             },
         });
         const data = yield response.json();
-        console.log(data);
         const { id_token, access_token } = data;
-        console.log(id_token, access_token);
         // get google user
         //1) in id token you will have all the details of google user just decode it
         // const googleUser = jwt.decode(id_token)
@@ -53,7 +50,6 @@ app.get("/done", (req, res, next) => __awaiter(void 0, void 0, void 0, function*
             },
         });
         const googleUser = yield googleUserData.json();
-        console.log("Google User: ");
         console.log(googleUser);
         res.status(200).redirect("http://localhost:3000");
     }

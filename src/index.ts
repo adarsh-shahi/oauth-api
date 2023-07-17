@@ -28,7 +28,6 @@ app.get("/done", async (req, res, next) => {
 	};
 
 	console.log(qs.stringify(values));
-	console.log("SIKE");
 	try {
 		const response = await fetch(`${url}?${qs.stringify(values)}`, {
 			method: "post",
