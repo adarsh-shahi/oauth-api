@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import qs from "qs";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 dotenv.config();
 
 const app = express();
