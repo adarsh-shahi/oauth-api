@@ -42,7 +42,7 @@ app.get("/done", async (req, res, next) => {
 		//1) in id token you will have all the details of google user just decode it
 		// const googleUser = jwt.decode(id_token)
 
-		//2) or you can send these ids to client(website) and from there make a http request and then get all google user details
+		//2) or you can send these ids to client(website) and from there m a http request and then get all google user details
 
 		const googleUserData = await fetch(
 			`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`,
@@ -57,7 +57,13 @@ app.get("/done", async (req, res, next) => {
 
 		console.log(googleUser);
 
-		res.status(200).redirect("http://localhost:3000")
+		res
+			.status(200)
+			.redirect(
+				`http://localhost:3000/login?jsonData=${encodeURIComponent(
+					JSON.stringify(googleUser)
+				)}`
+			);
 	} catch (error: any) {
 		console.log(error);
 		res.status(400).send("wrong");
